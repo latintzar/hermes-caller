@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ink"
+    android:visibility="gone"
+    android:clickable="true"
+    android:focusable="true">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/icState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="CALLING…"
+        android:textColor="@color/gold"
+        android:textSize="14sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.24"
+        android:textAllCaps="true"
+        android:paddingBottom="14dp"/>
+
+    <TextView
+        android:id="@+id/icNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/paper"
+        android:textSize="34sp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.04"
+        android:paddingHorizontal="24dp"/>
+
+    <TextView
+        android:id="@+id/icHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Recorded for review"
+        android:textColor="@color/ink_faint"
+        android:textSize="11sp"
+        android:fontFamily="sans-serif"
+        android:paddingTop="20dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="32dp"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/icMuteBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MUTE"
+            android:backgroundTint="@color/paper_warm"
+            android:textColor="@color/ink"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.16"
+            android:layout_marginEnd="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingVertical="14dp"/>
+
+        <Button
+            android:id="@+id/icSpeakerBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SPEAKER"
+            android:backgroundTint="@color/paper_warm"
+            android:textColor="@color/ink"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.16"
+            android:layout_marginHorizontal="4dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingVertical="14dp"/>
+
+        <Button
+            android:id="@+id/icHangupBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="✕ HANG UP"
+            android:backgroundTint="@color/rust"
+            android:textColor="@color/paper"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.16"
+            android:layout_marginStart="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingVertical="14dp"/>
+    </LinearLayout>
+
+</LinearLayout>

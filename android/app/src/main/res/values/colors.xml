@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="paper">#FFFFFFFF</color>
+    <color name="paper_warm">#FFF5F7F2</color>
+    <color name="paper_deep">#FFDFE3DA</color>
+
+    <color name="ink">#FF0E1A14</color>
+    <color name="ink_soft">#FF1F2A23</color>
+    <color name="ink_mid">#9E0E1A14</color>     
+    <color name="ink_faint">#570E1A14</color>   
+    <color name="rule">#291C1C1A</color>        
+    <color name="rule_strong">#661C1C1A</color> 
+
+    <color name="moss">#FF1A4D2E</color>
+    <color name="moss_soft">#FF2D6F43</color>
+    <color name="rust">#FFEE6C2C</color>
+    <color name="rust_deep">#FFC95216</color>
+    <color name="gold">#FFF3B94D</color>
+    <color name="forest">#FF143521</color>
+</resources>

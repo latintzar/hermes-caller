@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/paper_warm">
+
+        <Button
+            android:id="@+id/segRestaurants"
+            style="@style/SegmentTab"
+            android:text="RESTAURANTS"
+            android:backgroundTint="@color/ink"
+            android:textColor="@color/paper"/>
+
+        <Button
+            android:id="@+id/segFarms"
+            style="@style/SegmentTab"
+            android:text="FARMS"
+            android:backgroundTint="@color/paper_warm"
+            android:textColor="@color/ink"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/ink"/>
+
+    
+    <TextView
+        android:id="@+id/coachStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingTop="4dp"
+        android:paddingEnd="16dp"
+        android:text=""
+        android:textColor="@color/ink_faint"
+        android:textSize="10sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    
+    <LinearLayout
+        android:id="@+id/hotSignalBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:background="@color/paper_warm">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="◆ "
+            android:textColor="@color/rust"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:layout_gravity="top"
+            android:paddingTop="1dp"/>
+
+        <TextView
+            android:id="@+id/hotSignalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/ink_faint"
+            android:textSize="11sp"
+            android:lineSpacingMultiplier="1.3"
+            android:fontFamily="sans-serif"/>
+
+    </LinearLayout>
+
+    
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/cueRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:id="@+id/cueList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="16dp"/>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="8dp">
+
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cue_card"
+        android:padding="14dp">
+
+        <EditText
+            android:id="@+id/numberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="+34…"
+            android:textColorHint="@color/ink_faint"
+            android:textColor="@color/ink"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.04"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:textIsSelectable="false"
+            android:inputType="none"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="0dp"/>
+    </FrameLayout>
+
+    
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/ink_mid"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"
+        android:textAllCaps="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:minHeight="20dp"/>
+
+    
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="4dp">
+
+        <Button android:id="@+id/k1"   style="@style/DialKey" android:text="1" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k2"   style="@style/DialKey" android:text="2" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k3"   style="@style/DialKey" android:text="3" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k4"   style="@style/DialKey" android:text="4" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k5"   style="@style/DialKey" android:text="5" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k6"   style="@style/DialKey" android:text="6" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k7"   style="@style/DialKey" android:text="7" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k8"   style="@style/DialKey" android:text="8" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k9"   style="@style/DialKey" android:text="9" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/kStar" style="@style/DialKey" android:text="*" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/k0"   style="@style/DialKey" android:text="0" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <Button android:id="@+id/kHash" style="@style/DialKey" android:text="#" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+    </GridLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="6dp">
+
+        <Button
+            android:id="@+id/kDel"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="⌫"
+            android:textSize="20sp"
+            android:textColor="@color/ink"
+            android:backgroundTint="@color/paper_warm"
+            android:fontFamily="sans-serif-medium"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        
+        <FrameLayout
+            android:layout_width="180dp"
+            android:layout_height="64dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/rust"/>
+
+            <Button
+                android:id="@+id/callBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="☎  CALL"
+                android:textColor="@color/paper"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.18"
+                android:textAllCaps="true"
+                android:backgroundTint="@color/moss"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
+        </FrameLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <Space
+            android:layout_width="56dp"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+</LinearLayout>

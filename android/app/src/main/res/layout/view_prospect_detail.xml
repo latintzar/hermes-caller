@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp"
+        android:background="@color/paper">
+
+        <Button
+            android:id="@+id/pdBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← BACK"
+            android:textColor="@color/ink"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.12"
+            android:backgroundTint="@color/paper"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/pdCallBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☎ CALL"
+            android:backgroundTint="@color/moss"
+            android:textColor="@color/paper"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.12"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/ink"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/pdName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="-0.02"
+                android:text="Name"/>
+
+            <TextView
+                android:id="@+id/pdSegments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_faint"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.06"
+                android:layout_marginTop="6dp"
+                android:text="—"/>
+
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WHAT WE KNOW"
+                    android:textColor="@color/rust"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="0.18"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/pdInsightStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/ink_faint"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.10"
+                    android:text=""/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pdInsightSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingMultiplier="1.4"
+                android:text=""
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/pdInsightTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/pdInsightEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_faint"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:text="No signal yet — Honcho needs more conversations to form a view."/>
+
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NEXT STEPS"
+                android:textColor="@color/rust"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.18"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/pdNextSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <TextView
+                android:id="@+id/pdNextStepsEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(none — Hermes hasn't queued anything)"
+                android:textColor="@color/ink_faint"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:visibility="gone"/>
+
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOTES"
+                android:textColor="@color/rust"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.18"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/pdNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingMultiplier="1.4"
+                android:text="(no notes yet — Hermes will write some after the next call)"/>
+
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TRANSCRIPTS"
+                android:textColor="@color/rust"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.18"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/pdTranscripts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

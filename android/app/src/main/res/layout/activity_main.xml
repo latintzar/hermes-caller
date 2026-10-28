@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ink"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caller"
+            android:textColor="@color/paper"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.04"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/topBarStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HERMES CALLER"
+            android:textColor="@color/gold"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.16"
+            android:textAllCaps="true"/>
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:id="@+id/setupBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gold"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/setupText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="One-time setup needed"
+            android:textColor="@color/ink"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingEnd="8dp"/>
+        <Button
+            android:id="@+id/setupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OPEN"
+            android:backgroundTint="@color/ink"
+            android:textColor="@color/paper"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.12"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"/>
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:id="@+id/updateBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/rust"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NEW VERSION AVAILABLE"
+            android:textColor="@color/paper"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.16"/>
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE"
+            android:backgroundTint="@color/ink"
+            android:textColor="@color/paper"
+            android:textSize="11sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.12"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"/>
+    </LinearLayout>
+
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include
+            android:id="@+id/contentCoach"
+            layout="@layout/view_coach"/>
+
+        <include
+            android:id="@+id/contentProspects"
+            layout="@layout/view_prospects"/>
+
+        <include
+            android:id="@+id/contentProspectDetail"
+            layout="@layout/view_prospect_detail"/>
+
+        <include
+            android:id="@+id/contentTranscript"
+            layout="@layout/view_transcript"/>
+
+        <include
+            android:id="@+id/contentDialer"
+            layout="@layout/view_dialer"/>
+    </FrameLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/paper">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/ink"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/navCoach"
+                style="@style/NavTab"
+                android:text="DIAL"
+                android:backgroundTint="@color/ink"
+                android:textColor="@color/paper"/>
+
+            <Button
+                android:id="@+id/navProspects"
+                style="@style/NavTab"
+                android:text="SETUP"
+                android:backgroundTint="@color/paper"
+                android:textColor="@color/ink"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+<include
+    android:id="@+id/contentInCall"
+    layout="@layout/view_in_call"/>
+
+</FrameLayout>
