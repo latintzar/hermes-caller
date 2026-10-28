@@ -44,8 +44,13 @@ jobs:
             adb shell input keyevent 4
             sleep 2
             adb shell pidof dev.latintzar.hermescaller
+            adb exec-out screencap -p > setup.png
+            adb shell input tap 185 410
+            sleep 2
             adb exec-out screencap -p > dialer.png
       - uses: actions/upload-artifact@v4
         with:
           name: dialer-screenshot
-          path: dialer.png
+          path: |
+            setup.png
+            dialer.png
