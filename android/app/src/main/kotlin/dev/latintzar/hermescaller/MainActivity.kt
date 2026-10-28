@@ -897,7 +897,7 @@ class MainActivity : AppCompatActivity() {
         // Prompt for battery-optimization exemption once. The system dialog
         // remembers the answer; if the user already granted it (or denied),
         // this no-ops on subsequent launches.
-        promptIgnoreBatteryOptimizationsOnce()
+
     }
 
     private fun promptIgnoreBatteryOptimizationsOnce() {
