@@ -26,3 +26,26 @@ jobs:
           gradle-version: '8.4'
       - run: gradle --no-daemon :app:assembleDebug
         working-directory: android
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Capture the unconfigured dialer
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install -g android/app/build/outputs/apk/debug/app-debug.apk
+            adb shell am start -n dev.latintzar.hermescaller/.MainActivity
+            sleep 8
+            adb shell input keyevent 4
+            sleep 2
+            adb shell pidof dev.latintzar.hermescaller
+            adb exec-out screencap -p > dialer.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dialer-screenshot
+          path: dialer.png

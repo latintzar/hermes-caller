@@ -1,0 +1,7 @@
+# Transcription and coach handoff
+
+The opt-in command retains the original recorder pipeline’s ffmpeg conversion to 16 kHz WAV, Nova-3 multilingual request with optional keyterms, and timestamped utterance parsing. For genuine dual-channel calls it uses Deepgram multichannel mode and preserves channel numbers. For mixed recordings it uses diarization; those numbers do not establish identity. Confirm that a file really has two separate channels before using `--dual-channel`.
+
+Install ffmpeg and the server Python requirements. Supply `DEEPGRAM_API_KEY` through the process environment, not in a repository or command argument. Set `CALL_RECORDER_TX_LANG` to override the default `multi` language. Running the command sends the specified recording to Deepgram and can incur provider charges. Transcription never runs on the recording callback automatically.
+
+The resulting private JSON includes `full_text`, `duration_sec`, `dual_channel`, and `utterances` with `speaker`, `text`, `start`, and `end`. A coach can read this file on request. Keep coaching instructions, provider credentials, recipient data, recordings and transcripts in operator-controlled private storage. This release supplies the handoff format, not an automated coaching agent. Tests use invented utterances and mocked provider responses; no provider transcription has been performed as part of release verification.

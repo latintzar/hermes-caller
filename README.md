@@ -2,7 +2,7 @@
 
 Hermes Caller is an Android dialer and a small Python service for placing Twilio Voice calls with your own account. It grew from a founder's customer-discovery calling tool. The dialer, in-call controls and Android calling-account integration come from that app.
 
-This first public beta focuses on outbound calling. The original private deployment also had discovery coaching, contact enrichment and transcription; those integrations are outside this release. When enabled, the server stores dual-channel recordings locally for you to process.
+The calling service stores dual-channel recordings when enabled. An opt-in transcription command retains the original Nova-3 multilingual and speaker parsing workflow. Coaching can consume its transcript files through the documented handoff; the private coach context and account-specific enrichment remain separate.
 
 ## How it works
 
@@ -44,6 +44,16 @@ Open `android/` in Android Studio or build with JDK 17, Android SDK 34 and Gradl
 
 Use a server and Twilio account you control. A fresh app contains no server address, access key or provider credentials. No call is made by setup or the tests.
 
+## Transcribe a recording
+
+Install `ffmpeg`, set `DEEPGRAM_API_KEY` privately, and run the command only when you want to send a recording to Deepgram:
+
+```sh
+python server/transcribe.py /private/recording.wav --dual-channel --output /private/transcript.json
+```
+
+Use `--dual-channel` for a genuine two-channel Twilio recording: channel 0 is the caller and channel 1 is the other party. Omit it for a mixed recording and Nova-3 diarization assigns speaker numbers without identifying people. The default language is `multi`; `CALL_RECORDER_TX_LANG` can select another supported language. Repeat `--keyterm` for known names. The command creates a new owner-only JSON file with timestamped utterances. It does not run automatically; a provider request can incur charges. Keep recordings and transcripts private. See [the transcription and coach handoff](docs/transcription.md).
+
 ## Tests
 
 ```sh
@@ -51,6 +61,6 @@ pip install -r server/requirements.txt pytest
 python -m pytest -q
 ```
 
-Tests use local HTTP requests and mocked recording downloads. They verify app authentication, webhook signatures and account isolation, number and SID validation, opt-in recording and the fixed download host. They do not exercise a carrier or provider account.
+Tests use local HTTP requests and mocked recording downloads. They verify app authentication, webhook signatures and account isolation, number and SID validation, opt-in recording and the fixed download host. They also exercise Nova-3 request configuration and transcript parsing using fictional data. They do not exercise a carrier or provider account.
 
 See [architecture](docs/architecture.md), [API](docs/api.md), and [third-party notices](THIRD_PARTY.md). Original project code is MIT licensed; dependencies keep their own terms.
