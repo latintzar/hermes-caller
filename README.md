@@ -4,6 +4,11 @@ Hermes Caller is an Android dialer and a small Python service for placing Twilio
 
 The calling service stores dual-channel recordings when enabled. An opt-in transcription command retains the original Nova-3 multilingual and speaker parsing workflow. Coaching can consume its transcript files through the documented handoff; the private coach context and account-specific enrichment remain separate.
 
+
+![Hermes Caller dialer running on Android](docs/images/dialer.png)
+
+[View server setup](docs/images/setup.png).
+
 ## How it works
 
 1. The Android app requests a short-lived Voice token from your server using your private access key.
