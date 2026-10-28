@@ -1,4 +1,4 @@
-package casa.leo.callrecorder
+package dev.latintzar.hermescaller
 
 import android.app.Application
 

@@ -1,4 +1,4 @@
-package casa.leo.callrecorder
+package dev.latintzar.hermescaller
 
 import android.Manifest
 import android.content.Context
@@ -102,8 +102,8 @@ class OutboundCall(
         // Drop this once recordings show channel 0 with audio for a few
         // calls in a row.
         try {
-            Voice.setLogLevel(LogLevel.DEBUG)
-            Voice.setModuleLogLevel(LogModule.WEBRTC, LogLevel.DEBUG)
+            Voice.setLogLevel(LogLevel.ERROR)
+            Voice.setModuleLogLevel(LogModule.WEBRTC, LogLevel.ERROR)
         } catch (e: Exception) {
             Log.w(TAG, "setLogLevel failed: ${e.message}")
         }
@@ -122,9 +122,6 @@ class OutboundCall(
                 // Result POSTs to /api/diag/mic — answers the question
                 // "is the mic actually delivering samples right now?"
                 // independent of whatever Twilio is doing with WebRTC.
-                withContext(Dispatchers.IO) {
-                    MicDiag.run(ctx, extra = "pre_voice_connect to=$toNumber")
-                }
 
                 val options = ConnectOptions.Builder(token)
                     .params(mapOf("To" to toNumber))

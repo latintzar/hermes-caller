@@ -17,7 +17,7 @@
         android:textColor="@color/ink"
         android:textSize="13sp"
         android:fontFamily="monospace"
-        android:text="2026-05-14 18:35"/>
+        android:text="Date"/>
 
     <TextView
         android:id="@+id/tDur"
@@ -26,5 +26,5 @@
         android:textColor="@color/ink_faint"
         android:textSize="13sp"
         android:fontFamily="monospace"
-        android:text="0:44"/>
+        android:text="Duration"/>
 </LinearLayout>

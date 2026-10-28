@@ -1,4 +1,4 @@
-package casa.leo.callrecorder
+package dev.latintzar.hermescaller
 
 import android.content.Context
 import android.media.AudioAttributes
@@ -137,8 +137,8 @@ class HermesConnection(
         // gates the mic off. The default ctor disables hardware AEC/NS.
         try {
             Voice.setAudioDevice(DefaultAudioDevice())
-            Voice.setLogLevel(LogLevel.DEBUG)
-            Voice.setModuleLogLevel(LogModule.WEBRTC, LogLevel.DEBUG)
+            Voice.setLogLevel(LogLevel.ERROR)
+            Voice.setModuleLogLevel(LogModule.WEBRTC, LogLevel.ERROR)
         } catch (e: Exception) {
             Log.w(TAG, "Voice config failed: ${e.message}")
         }
@@ -159,9 +159,6 @@ class HermesConnection(
                 // Raw-mic smoke test — answers the question "is the OS
                 // delivering mic samples right now?" independent of Twilio.
                 // Result toasts on screen + posts to /api/diag/mic.
-                withContext(Dispatchers.IO) {
-                    MicDiag.run(ctx, extra = "telecom_path to=$toNumber")
-                }
 
                 val options = ConnectOptions.Builder(token)
                     .params(mapOf("To" to toNumber))

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'casa.leo.callrecorder'
+    namespace 'dev.latintzar.hermescaller'
     compileSdk 34
 
     defaultConfig {
-        applicationId "casa.leo.callrecorder"
+        applicationId "dev.latintzar.hermescaller"
         minSdk 29
         targetSdk 34
         versionCode 17
@@ -26,7 +26,6 @@ android {
         }
         release {
             minifyEnabled false
-            signingConfig signingConfigs.debug
         }
     }
 
