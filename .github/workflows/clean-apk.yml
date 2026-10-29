@@ -1,0 +1,43 @@
+name: Clean main-source Android preview APK
+on:
+  push:
+    branches: [build/clean-apk]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cd0b55ca807d
+      - name: Verify exact public source and unconfigured endpoint
+        run: |
+          test "$(git rev-parse HEAD)" = "cd0b55ca807d1a2b0e4c46482b970ea9bd5bb39d" || test "$(git rev-parse --short=12 HEAD)" = "cd0b55ca807d"
+          grep -F "buildConfigField \"String\", \"SERVER_URL\", '\"\"'" android/app/build.gradle
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.4'
+      - name: Build operator-configured debug preview
+        run: gradle --no-daemon :app:assembleDebug
+        working-directory: android
+      - name: Verify package, signing and permissions
+        run: |
+          set -eu
+          mkdir -p capture
+          cp android/app/build/outputs/apk/debug/app-debug.apk capture/hermes-caller-v5.8-debug.apk
+          sha256sum capture/hermes-caller-v5.8-debug.apk > capture/SHA256SUMS
+          BUILD_TOOLS=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)
+          "$BUILD_TOOLS/apksigner" verify --verbose --print-certs capture/hermes-caller-v5.8-debug.apk > capture/signature.txt
+          "$BUILD_TOOLS/aapt" dump badging capture/hermes-caller-v5.8-debug.apk > capture/package.txt
+          git rev-parse HEAD > capture/source-commit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hermes-caller-clean-preview-apk
+          path: capture/
