@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: cd0b55ca807d
+          ref: cd0b55ca807d7d6e30deea63477e9c5129d732f1
       - name: Verify exact public source and unconfigured endpoint
         run: |
-          test "$(git rev-parse HEAD)" = "cd0b55ca807d1a2b0e4c46482b970ea9bd5bb39d" || test "$(git rev-parse --short=12 HEAD)" = "cd0b55ca807d"
+          test "$(git rev-parse HEAD)" = "cd0b55ca807d7d6e30deea63477e9c5129d732f1"
           grep -F "buildConfigField \"String\", \"SERVER_URL\", '\"\"'" android/app/build.gradle
       - uses: actions/setup-java@v4
         with:
