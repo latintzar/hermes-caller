@@ -21,6 +21,20 @@ The calling service stores dual-channel recordings when enabled. An opt-in trans
 
 You need a Twilio account, a verified caller ID or eligible number, a Voice API key, a TwiML App and an HTTPS server reachable by Twilio. Provider calls and recording may incur charges. Obtain consent and follow the recording rules that apply to your calls.
 
+## Product workflow
+
+Calling, recording and turning conversations into useful discovery notes involves several tools. A dedicated dialer can keep the call and its recording connected to a controlled transcription workflow.
+
+| Feature | What it does |
+| --- | --- |
+| Native Android calling | Use Twilio’s Voice SDK with a short-lived token from your own server. |
+| Private server setup | Configure the app’s HTTPS server and access key on the device. |
+| Dual-channel recordings | Retain each call’s two channels when recording is enabled. |
+| Deepgram transcripts | Run the opt-in Nova-3 multilingual and speaker parsing workflow. |
+| Coaching handoff | Pass transcript files to a separately configured coaching workflow. |
+
+The app and Python server source are published, with a downloadable debug-signed Android preview. It starts with an empty server configuration. Real calls use your account, caller identity and consent arrangements; the release documents its tested scope. Configure an owned HTTPS server and Twilio account, then validate a consented test call and optional transcription. [Product guide](docs/PROJECT.md).
+
 ## Run the server
 
 Python 3.12 or later is recommended. Install the requirements in a virtual environment:
