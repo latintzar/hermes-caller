@@ -9,6 +9,7 @@ The calling service stores dual-channel recordings when enabled. An opt-in trans
 
 ![Hermes Caller Android dialer in a Pixel 2 frame](docs/assets/readme-hero.jpg)
 
+[Android device artwork credit](docs/assets/device-art-credit.md)
 
 [View server setup](docs/images/setup.png).
 
@@ -72,3 +73,5 @@ python -m pytest -q
 Tests use local HTTP requests and mocked recording downloads. They verify app authentication, webhook signatures and account isolation, number and SID validation, opt-in recording and the fixed download host. They also exercise Nova-3 request configuration and transcript parsing using fictional data. They do not exercise a carrier or provider account.
 
 See [architecture](docs/architecture.md), [API](docs/api.md), and [third-party notices](THIRD_PARTY.md). Original project code is MIT licensed; dependencies keep their own terms.
+
+[made by atelier neyra](https://atelierneyra.com)
