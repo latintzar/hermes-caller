@@ -2,7 +2,7 @@
 
 Hermes Caller is an Android dialer and a small Python service for placing Twilio Voice calls with your own account. It grew from a founder's customer-discovery calling tool. The dialer, in-call controls and Android calling-account integration come from that app.
 
-[Website](https://atelierneyra.com/hermes-caller) · [Documentation](https://docs.atelierneyra.com/hermes-caller/overview/)
+[Website](https://atelierneyra.com/hermes-caller) · [Download Android preview](https://github.com/latintzar/hermes-caller/releases/download/v5.8-preview/hermes-caller-v5.8-debug.apk) · [Documentation](https://docs.atelierneyra.com/hermes-caller/overview/)
 
 The calling service stores dual-channel recordings when enabled. An opt-in transcription command retains the original Nova-3 multilingual and speaker parsing workflow. Coaching can consume its transcript files through the documented handoff; the private coach context and account-specific enrichment remain separate.
 
