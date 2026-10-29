@@ -25,4 +25,4 @@ Android dialer → Own Twilio service → Optional call recording → Opt-in tra
 
 The app and Python server source are published, with a downloadable debug-signed Android preview. It starts with an empty server configuration. Real calls use your account, caller identity and consent arrangements; the release documents its tested scope. Configure an owned HTTPS server and Twilio account, then validate a consented test call and optional transcription.
 
-Source: [docs/setup.md](../docs/setup.md), [docs/architecture.md](../docs/architecture.md), [docs/verification.md](../docs/verification.md).
+Source: [docs/architecture.md](../docs/architecture.md).
