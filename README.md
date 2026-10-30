@@ -1,6 +1,8 @@
 # Hermes Caller
 
-A Twilio dialler with diarised call transcription
+A Twilio dialler with diarised transcripts and Hermes debriefs
+
+Hermes Caller is a Twilio dialler with diarised call transcription and Hermes debriefs. The Android app records customer-discovery calls, Deepgram Nova-3 produces multilingual transcripts, and Hermes turns the conversation into a debrief.
 
 Hermes Caller is an Android dialer and a small Python service for placing Twilio Voice calls with your own account. It grew from a founder's customer-discovery calling tool. The dialer, in-call controls and Android calling-account integration come from that app.
 
@@ -9,7 +11,7 @@ Hermes Caller is an Android dialer and a small Python service for placing Twilio
 The calling service stores dual-channel recordings when enabled. An opt-in transcription command retains the original Nova-3 multilingual and speaker parsing workflow. Coaching can consume its transcript files through the documented handoff; the private coach context and account-specific enrichment remain separate.
 
 
-![Hermes Caller](https://atelierneyra.com/assets/product-motion-v3/hermes-caller.jpg)
+![Hermes Caller](https://atelierneyra.com/assets/product-motion-v4/hermes-caller.jpg)
 
 [Phone artwork credit](docs/assets/handset-CREDITS.md)
 
