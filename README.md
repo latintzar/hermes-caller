@@ -39,6 +39,8 @@ Calling, recording and turning conversations into useful discovery notes involve
 
 The app and Python server source are published, with a downloadable debug-signed Android preview. It starts with an empty server configuration. Real calls use your account, caller identity and consent arrangements; the release documents its tested scope. Configure an owned HTTPS server and Twilio account, then validate a consented test call and optional transcription. [Product guide](docs/PROJECT.md).
 
+[Set up with your agent](docs/AGENT-SETUP.md).
+
 ## Run the server
 
 Python 3.12 or later is recommended. Install the requirements in a virtual environment:
