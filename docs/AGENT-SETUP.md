@@ -4,7 +4,7 @@ Hermes Caller connects an Android Twilio dialler, private call recordings, Deepg
 
 ## Connect calling
 
-Follow [server setup](../README.md#run-the-server) for the Python environment and the exact variable table. The server reads process environment values; your service manager or secret store supplies the private configuration.
+Follow [server setup](getting-started.md#run-the-server) for the Python environment and the exact variable table. The server reads process environment values; your service manager or secret store supplies the private configuration.
 
 Your Twilio account owns the caller ID, Voice API key and TwiML App. Your server owns `PUBLIC_BASE_URL` and the random `CALLER_ACCESS_KEY`; the Android app's **Setup** screen receives that origin and access key. Configure your TwiML App's POST callback as `https://YOUR-HOST/api/caller/twiml`.
 
@@ -33,6 +33,6 @@ Give Hermes or your chosen agent access to the selected private transcript and [
 
 ## Verify the result
 
-Run [the offline test command](../README.md#tests) first. A successful HTTP health check verifies server reachability; authenticated token creation, a consented test call, recording download, transcription and the debrief each provide their own result. Keep recordings, tokens and customer context in operator-controlled storage.
+Run [the offline test command](getting-started.md#tests) first. A successful HTTP health check verifies server reachability; authenticated token creation, a consented test call, recording download, transcription and the debrief each provide their own result. Keep recordings, tokens and customer context in operator-controlled storage.
 
 [Architecture](architecture.md) · [Source server](../server/app.py) · [Transcription source](../server/transcribe.py) · [MIT licence](../LICENSE)

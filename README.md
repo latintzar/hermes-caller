@@ -2,96 +2,56 @@
 
 A Twilio dialler with diarised transcripts and Hermes debriefs
 
-Hermes Caller is a Twilio dialler with diarised call transcription and Hermes debriefs. The Android app records customer-discovery calls, Deepgram Nova-3 produces multilingual transcripts, and Hermes turns the conversation into a debrief.
+Hermes Caller is an Android dialler that connects a customer-discovery call to its recording, transcript and debrief. Twilio places the call, Deepgram Nova-3 produces a multilingual speaker-separated transcript, and Hermes uses that transcript for reflection and follow-up questions.
 
-Hermes Caller is an Android dialer and a small Python service for placing Twilio Voice calls with your own account. It grew from a founder's customer-discovery calling tool. The dialer, in-call controls and Android calling-account integration come from that app.
-
-[Website](https://atelierneyra.com/hermes-caller) · [Download Android preview](https://github.com/latintzar/hermes-caller/releases/download/v5.8-preview/hermes-caller-v5.8-debug.apk) · [Documentation](https://docs.atelierneyra.com/hermes-caller/overview/)
-
-The calling service stores dual-channel recordings when enabled. An opt-in transcription command retains the original Nova-3 multilingual and speaker parsing workflow. Coaching can consume its transcript files through the documented handoff; the private coach context and account-specific enrichment remain separate.
-
+[Website](https://atelierneyra.com/hermes-caller) · [Download Android preview](https://github.com/latintzar/hermes-caller/releases/download/v5.8-preview/hermes-caller-v5.8-debug.apk) · [Product tour](docs/product-tour.md) · [Documentation](https://docs.atelierneyra.com/hermes-caller/overview/)
 
 ![Hermes Caller](https://atelierneyra.com/assets/product-motion-v5/hermes-caller-2f04d2b4f42a.jpg)
 
 [Phone artwork credit](docs/assets/handset-CREDITS.md)
 
-[View server setup](docs/images/setup.png).
+## Call to debrief
 
-## How it works
+1. Enter your HTTPS server and access key in the Android app’s **Setup** screen.
+2. Dial an international number and use the in-call mute, speaker and hang-up controls.
+3. With recording enabled, your server stores Twilio’s dual-channel recording privately.
+4. Run the opt-in Nova-3 transcription command to produce timestamped utterances.
+5. Give that JSON to Hermes or an agent using the included discovery-call-coach skill.
 
-1. The Android app requests a short-lived Voice token from your server using your private access key.
-2. Twilio's Android SDK connects the call. Twilio requests signed TwiML from your server, which dials the number and records both legs.
-3. Twilio signs the recording callback. If recording storage is enabled, the server downloads it to your private directory using the recording SID.
+The [product tour](docs/product-tour.md) follows that handoff and shows the source behind each stage.
 
-You need a Twilio account, a verified caller ID or eligible number, a Voice API key, a TwiML App and an HTTPS server reachable by Twilio. Provider calls and recording may incur charges. Obtain consent and follow the recording rules that apply to your calls.
+## Product areas
 
-## Product workflow
-
-Calling, recording and turning conversations into useful discovery notes involves several tools. A dedicated dialer can keep the call and its recording connected to a controlled transcription workflow.
-
-| Feature | What it does |
+| Area | Result |
 | --- | --- |
-| Native Android calling | Use Twilio’s Voice SDK with a short-lived token from your own server. |
-| Private server setup | Configure the app’s HTTPS server and access key on the device. |
-| Dual-channel recordings | Retain each call’s two channels when recording is enabled. |
-| Deepgram transcripts | Run the opt-in Nova-3 multilingual and speaker parsing workflow. |
-| Coaching handoff | Pass transcript files to a separately configured coaching workflow. |
+| Android dialler | Twilio Voice calling with short-lived tokens and native call controls |
+| Private service | App authentication, signed TwiML/callbacks and optional recording storage |
+| Transcription | Nova-3 multilingual utterances with timestamps and channel/speaker labels |
+| Debrief | A transcript handoff and generic discovery-call-coach skill |
 
-The app and Python server source are published, with a downloadable debug-signed Android preview. It starts with an empty server configuration. Real calls use your account, caller identity and consent arrangements; the release documents its tested scope. Configure an owned HTTPS server and Twilio account, then validate a consented test call and optional transcription. [Product guide](docs/PROJECT.md).
-
-[Set up with your agent](docs/AGENT-SETUP.md).
+The source release includes the Android app, Python server, transcription command and generic coach skill. The debug-signed preview starts with empty server settings. The original private Hermes coach and account-specific discovery systems are separate from this portable package; the public debrief uses your configured agent and the transcript file.
 
 ## Run the server
 
-Python 3.12 or later is recommended. Install the requirements in a virtual environment:
+The [setup guide](docs/getting-started.md#run-the-server) lists the exact Twilio fields, HTTPS setup, Android build and optional recording configuration. Calling uses your Twilio account; transcription uses your Deepgram account. Recording and provider requests are explicit operations.
 
-```sh
-python -m venv .venv
-. .venv/bin/activate
-pip install -r server/requirements.txt
-```
+[Set up with your agent](docs/AGENT-SETUP.md) · [Transcription and coach handoff](docs/transcription.md)
 
-Set the following values in your private environment or service manager. Generate a unique random access key of at least 32 characters and keep it on your server and your own device.
+## Source
 
-| Variable | Purpose |
+| Module | Source |
 | --- | --- |
-| `PUBLIC_BASE_URL` | Public HTTPS origin, without a path or trailing slash |
-| `CALLER_ACCESS_KEY` | Private random key for the Android app |
-| `TWILIO_ACCOUNT_SID` | Your Twilio account SID |
-| `TWILIO_AUTH_TOKEN` | Your Twilio auth token, used to validate signatures and download recordings |
-| `TWILIO_API_KEY_SID`, `TWILIO_API_KEY_SECRET` | API key pair for Voice access tokens |
-| `TWILIO_TWIML_APP_SID` | SID of your TwiML App |
-| `TWILIO_CALLER_ID` | Your eligible caller ID in E.164 format |
-| `STORE_RECORDINGS` | Set to `1` to download completed recordings |
-| `RECORDINGS_DIR` | Private directory for stored recordings, required when storage is enabled |
+| Android screens and calls | [MainActivity.kt](android/app/src/main/kotlin/dev/latintzar/hermescaller/MainActivity.kt), [OutboundCall.kt](android/app/src/main/kotlin/dev/latintzar/hermescaller/OutboundCall.kt) |
+| Tokens, TwiML and recording callbacks | [server/app.py](server/app.py) |
+| Audio conversion and speaker-separated transcript | [server/transcribe.py](server/transcribe.py) |
+| Debrief workflow | [discovery-call-coach](skills/discovery-call-coach/SKILL.md) |
 
-Run `uvicorn app:app --app-dir server --host 127.0.0.1 --port 8000` behind an HTTPS reverse proxy. Set your TwiML App's voice request URL to `https://YOUR-HOST/api/caller/twiml` with POST. The externally visible origin must match `PUBLIC_BASE_URL` exactly for signature verification. Restrict access to the host and keep the recording directory private.
-
-## Build and configure Android
-
-Open `android/` in Android Studio or build with JDK 17, Android SDK 34 and Gradle 8.4: `gradle -p android :app:assembleDebug`. The GitHub Actions workflow builds the same debug variant. Install your own build on your device, open **Setup**, and enter the HTTPS server origin and access key. The key is held in app-private preferences and Android backup is disabled; protect the device itself. The app requests microphone and phone permissions. Enter a destination in international E.164 format and tap Call.
-
-Use a server and Twilio account you control. A fresh app contains no server address, access key or provider credentials. No call is made by setup or the tests.
-
-## Transcribe a recording
-
-Install `ffmpeg`, set `DEEPGRAM_API_KEY` privately, and run the command only when you want to send a recording to Deepgram:
-
-```sh
-python server/transcribe.py /private/recording.wav --dual-channel --output /private/transcript.json
-```
-
-Use `--dual-channel` for a genuine two-channel Twilio recording: channel 0 is the caller and channel 1 is the other party. Omit it for a mixed recording and Nova-3 diarization assigns speaker numbers without identifying people. The default language is `multi`; `CALL_RECORDER_TX_LANG` can select another supported language. Repeat `--keyterm` for known names. The command creates a new owner-only JSON file with timestamped utterances. It does not run automatically; a provider request can incur charges. Keep recordings and transcripts private. See [the transcription and coach handoff](docs/transcription.md).
+[Architecture](docs/architecture.md) · [API](docs/api.md) · [Product record](docs/PROJECT.md)
 
 ## Tests
 
-```sh
-pip install -r server/requirements.txt pytest
-python -m pytest -q
-```
+The [test guide](docs/getting-started.md#tests) covers local authentication, signed callbacks, account isolation and transcript parsing. Its provider responses are mocked; live calls and transcription use your configured accounts.
 
-Tests use local HTTP requests and mocked recording downloads. They verify app authentication, webhook signatures and account isolation, number and SID validation, opt-in recording and the fixed download host. They also exercise Nova-3 request configuration and transcript parsing using fictional data. They do not exercise a carrier or provider account.
-
-See [architecture](docs/architecture.md), [API](docs/api.md), and [third-party notices](THIRD_PARTY.md). Original project code is MIT licensed; dependencies keep their own terms.
+Original project code is [MIT licensed](LICENSE); dependencies retain their [own terms](THIRD_PARTY.md).
 
 [made by atelier neyra](https://atelierneyra.com)
